@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Hero = () => {
+const Footer = () => {
     return (
-        // Hero section main container 
+        // main footer container
         <div>
             
         </div>
     );
 };
 
-export default Hero;
+export default Footer;

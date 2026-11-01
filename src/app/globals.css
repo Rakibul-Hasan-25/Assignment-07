@@ -1,5 +1,7 @@
 @import "tailwindcss";
+@plugin "daisyui";
 @import "@heroui/styles"; 
+
 
 @theme {
   --animate-infinite-scroll: infinite-scroll 90s linear infinite;

@@ -5,7 +5,7 @@ export interface Categories {
     icon: string;
 };
 export interface PriceChange {
-    dir: "up" | "down" | "stable";
+    dir: "up" | "down" | "flat";
     pct: number;
 }
 
@@ -31,4 +31,34 @@ export interface Product {
     lastMonth: number;
     change: PriceChange;
     markets: MarketPrice[];
+}
+
+export interface ProductCardProps {
+    product:Product;
+}
+
+export interface CategoryProductsProps {
+    params: Promise<{slug: string;}>;
+}
+
+export interface ProductProps {
+    params: Promise<{id:number}>;
+}
+
+interface ProductUnit {
+    [key:string]:string;
+    kg:string;
+    litre:string;
+    dozen:string;
+    piece:string;
+}
+
+export default function ConvertUnit(unit:string):string{
+    const units:ProductUnit = {
+        kg:"কেজি",
+        litre:"লিটার",
+        dozen:"ডজন",
+        piece:"পিছ"
+    };
+    return units[unit] || unit;
 }

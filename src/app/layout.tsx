@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header";
+import Header from "../components/Header";
 
 import { Noto_Sans_Bengali } from "next/font/google";
 
@@ -30,7 +30,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="bn"
-      className={`${geistSans.variable} ${geistMono.variable} ${bengaliFont.className} h-full antialiased`}
+      data-theme="light"
+      className={`${geistSans.variable} ${geistMono.variable} ${bengaliFont.className} h-full antialiased bg-[#f0f5f0]`}
     >
       <body className="min-h-full flex flex-col">
         <Header/>
