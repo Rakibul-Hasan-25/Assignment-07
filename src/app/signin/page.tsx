@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
-import { Eye, EyeOff,ArrowLeft } from "lucide-react";
+import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 import {
   Button,
   Form,
@@ -53,9 +53,7 @@ export default function SignupPage() {
       setLoading(false);
     }
   }
-  const handleSocialLogin = async (
-    provider: "google" | "github"
-  ) => {
+  const handleSocialLogin = async (provider: "google" | "github") => {
     setLoading(true);
 
     try {
@@ -76,16 +74,15 @@ export default function SignupPage() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-[#f5f8f5] px-4 py-10">
-        <div className="mb-5 text-center">
-          <h1 className="mt-5 text-2xl font-bold text-gray-900">সাইন ইন</h1>
+      <div className="mb-5 text-center">
+        <h1 className="mt-5 text-2xl font-bold text-gray-900">সাইন ইন</h1>
 
-          <p className="mt-2 text-sm text-gray-500">
-            বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্ট খুলুন।
-          </p>
-        </div>
+        <p className="mt-2 text-sm text-gray-500">
+          বিস্তারিত দাম, বাজার তুলনা ও প্রোফাইল দেখতে অ্যাকাউন্ট খুলুন।
+        </p>
+      </div>
       <div className="w-full max-w-md rounded-3xl border border-gray-200 bg-white p-7 shadow-xl sm:p-9">
         {/* Brand */}
-        
 
         {/* Signup Form */}
         <Form onSubmit={handleSignin} className="flex flex-col gap-5">
@@ -142,8 +139,20 @@ export default function SignupPage() {
         </div>
         {/* social sign in  */}
         <div className="flex items-center justify-between mt-3">
-          <button onClick={() => handleSocialLogin("google")} disabled={loading} className="btn">Google দিয়ে চালিয়ে যান</button>
-          <button onClick={() => handleSocialLogin("github")} disabled={loading} className="btn">GitHub দিয়ে চালিয়ে যান</button>
+          <button
+            onClick={() => handleSocialLogin("google")}
+            disabled={loading}
+            className="btn"
+          >
+            Google দিয়ে চালিয়ে যান
+          </button>
+          <button
+            onClick={() => handleSocialLogin("github")}
+            disabled={loading}
+            className="btn"
+          >
+            GitHub দিয়ে চালিয়ে যান
+          </button>
         </div>
         <div className="mt-5 text-center">
           <p className="text-sm text-gray-600">
@@ -156,11 +165,12 @@ export default function SignupPage() {
             </Link>
           </p>
         </div>
-        
       </div>
       <div className="flex items-center justify-center mt-8">
-        <Link className="block text-sm text-gray-600" href='/'><ArrowLeft className="inline-block" size={13}/>{" "}হোম পেইজ ফিরে যান</Link>
-        </div>
+        <Link className="block text-sm text-gray-600" href="/">
+          <ArrowLeft className="inline-block" size={13} /> হোম পেইজ ফিরে যান
+        </Link>
+      </div>
     </main>
   );
 }

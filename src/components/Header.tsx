@@ -4,7 +4,6 @@ import CategoriesDataProvider from "@/lib/CategoriesDataProvider";
 import Link from "next/link";
 import { Minus, ShoppingCart, Triangle } from "lucide-react";
 import AllProductsDataProvider from "@/lib/AllProductsDataProvider";
-import LogoutButton from "./LogoutBtn";
 import HandleSession from "./HandleSession";
 const today = new Date();
 
