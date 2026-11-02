@@ -23,14 +23,14 @@ export default function ProfilePage() {
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
 
-    const name = String(data.name ?? "");
+    const name = String(data.name ?? "").trim();
+    const nameRegex = /^[A-Za-z\u0980-\u09FF]+(?:\s+[A-Za-z\u0980-\u09FF]+)*$/;
 
-    if (!name) {
-      setMessage("নাম লিখুন।");
+    if (!name || !nameRegex.test(name)) {
+      setMessage("সঠিক নাম লিখুন। শুধু বাংলা ও ইংরেজি অক্ষর ব্যবহার করুন।");
       setMessageType("error");
       return;
     }
-
     setIsUpdating(true);
     setMessage("");
     setMessageType("");
@@ -91,10 +91,10 @@ export default function ProfilePage() {
   // User not logged in
 
   return (
-    <div>
+    <div className="mt-20 flex items-center justify-center">
       {session && (
-        <div className="min-h-screen bg-[#f0f5f0] px-4 py-5">
-          <div className="mx-auto max-w-lg">
+        <div className="">
+          <div className="max-w-lg">
             {/* Page Header */}
             <div className="mb-4">
               <h1 className="text-lg font-bold text-gray-800">আমার প্রোফাইল</h1>
@@ -141,21 +141,20 @@ export default function ProfilePage() {
 
             {/* Profile Form Card */}
             <div className="rounded-lg border border-gray-100 bg-white p-4">
-              <h2 className="mb-5 text-sm font-semibold text-gray-800">তথ্য</h2>
+              <h2 className="mb-5 font-semibold text-gray-800">তথ্য</h2>
 
               <Form onSubmit={handleUpdate}>
                 {/* Name Input */}
-                <TextField name="name" type="text" isRequired className="mb-3">
-                  <Label
-                    className="mb-2 block text-[10px] font-medium text-gray-600"
-                  >
+                <TextField name="name" type="text" pattern="[A-Za-z\u0980-\u09FF]+(?: [A-Za-z\u0980-\u09FF]+)*" isRequired className="mb-3">
+                  <Label className="mb-2 block text-[12px] font-medium text-gray-600">
                     নাম
                   </Label>
 
-                  <Input placeholder="আপনার নাম লিখুন"
+                  <Input
+                    placeholder="আপনার নাম লিখুন"
                     className="w-full rounded border border-gray-200 bg-white px-3 py-2 text-xs text-gray-800 outline-none transition focus:border-green-600 focus:ring-1 focus:ring-green-100"
                   />
-                  <FieldError/>
+                  <FieldError />
                 </TextField>
 
                 {/* Feedback Message */}

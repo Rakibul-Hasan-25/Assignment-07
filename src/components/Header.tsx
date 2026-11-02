@@ -59,7 +59,7 @@ const Header = async () => {
         </div>
       </div>
       {/* header bottom moving part main container */}
-      <div className="border-t border-b border-gray-200">
+      <div className="border-t border-b border-gray-200 overflow-hidden">
         <div className="flex w-max animate-infinite-scroll  hover:paused">
           {[0, 1].map((copy) => (
             <div key={copy} className="flex gap-2">
