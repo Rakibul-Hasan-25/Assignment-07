@@ -4,6 +4,8 @@ import CategoriesDataProvider from "@/lib/CategoriesDataProvider";
 import Link from "next/link";
 import { Minus, ShoppingCart, Triangle } from "lucide-react";
 import AllProductsDataProvider from "@/lib/AllProductsDataProvider";
+import LogoutButton from "./LogoutBtn";
+import HandleSession from "./HandleSession";
 const today = new Date();
 
 export const banglaDate = new Intl.DateTimeFormat("bn-BD", {
@@ -20,20 +22,27 @@ const Header = async () => {
     // main container of the header
     <div className="bg-white">
       {/* header top part container */}
-      <Link href="/" className="block container mx-auto mt-5 mb-5">
-        {/* top part sub container */}
-        <div className="flex gap-2">
-          {/* left side logo */}
-          <div className="bg-green-700 flex items-center justify-center border border-transparent rounded-lg p-2">
-            <ShoppingCart color="white" size={29} />
+      <div className="flex justify-between items-center container mx-auto">
+        {/* top part left side logo */}
+        <Link href="/" className="block mt-5 mb-5">
+          {/* top part sub container */}
+          <div className="flex gap-2">
+            {/* left side logo */}
+            <div className="bg-green-700 flex items-center justify-center border border-transparent rounded-lg p-2">
+              <ShoppingCart color="white" size={29} />
+            </div>
+            {/* right side title and date  */}
+            <div>
+              <h2 className="font-extrabold tracking-wider text-2xl">
+                বাজার দর
+              </h2>
+              <p className="font-light tracking-tighter">{banglaDate}</p>
+            </div>
           </div>
-          {/* right side title and date  */}
-          <div>
-            <h2 className="font-extrabold tracking-wider text-2xl">বাজার দর</h2>
-            <p className="font-light tracking-tighter">{banglaDate}</p>
-          </div>
-        </div>
-      </Link>
+        </Link>
+        {/* right side signin and sign up  */}
+        <HandleSession/>
+      </div>
       {/* header category part main container */}
       <div className="container mx-auto mb-4">
         {/* header category part sub container */}
@@ -56,7 +65,11 @@ const Header = async () => {
           {[0, 1].map((copy) => (
             <div key={copy} className="flex gap-2">
               {allProducts.map((product) => (
-                <Link className="block" href={`/product/${product.id}`} key={`${copy}-${product.id}`}>
+                <Link
+                  className="block"
+                  href={`/product/${product.id}`}
+                  key={`${copy}-${product.id}`}
+                >
                   <div className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-green-500">
                     <span>{product.categoryIcon}</span>
                     <span>{product.nameBn}</span>
@@ -81,7 +94,7 @@ const Header = async () => {
                       </span>
                     )}
                     {product.change.dir === "flat" && (
-                      <span className="flex items-center gap-0.5 text-green-700">
+                      <span className="flex items-center gap-0.5 text-gray-700">
                         <Minus fill="black" size={12} />
                         {product.change.pct.toLocaleString("bn-BD")}%
                       </span>

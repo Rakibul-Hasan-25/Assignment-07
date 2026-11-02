@@ -8,7 +8,7 @@ const Hero = () => {
         // Hero section main container 
         <div className='mt-5'>
             {/* Heor section sub container */}
-            <div className='container mx-auto border border-transparent rounded-2xl  px-2 py-2 flex flex-wrap-reverse justify-center lg:justify-between items-center bg-white'>
+            <div className='container mx-auto border border-transparent rounded-2xl  px-2 pb-5 flex flex-wrap-reverse justify-center lg:justify-between items-center bg-white'>
                 {/* hero section left side container */}
                 <div className='flex flex-col items-center lg:block'>
                     <span className='text-green-700 border-transparent rounded-2xl bg-green-100 py-1 px-2'>{banglaDate}</span>
