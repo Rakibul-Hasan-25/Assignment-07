@@ -92,7 +92,7 @@ export default function ProfilePage() {
   // User not logged in
 
   return (
-    <div className="mt-20 flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center">
       {session && (
         <div className="">
           <div className="max-w-lg">

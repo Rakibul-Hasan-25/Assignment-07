@@ -1,6 +1,6 @@
 export default function Loading() {
     return (
-      <div className="min-h-[60vh] flex flex-col justify-center items-center gap-4">
+      <div className="min-h-screen flex flex-col justify-center items-center gap-4">
         <span className="loading loading-spinner loading-lg text-green-600"></span>
   
         <p className="text-gray-600 font-medium">

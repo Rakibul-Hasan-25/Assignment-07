@@ -20,7 +20,7 @@ const Header = async () => {
   const allProducts: Product[] = await AllProductsDataProvider();
   return (
     // main container of the header
-    <div className="bg-white">
+    <div className="bg-white ml-0.5">
       {/* header top part container */}
       <div className="flex justify-between items-center container mx-auto">
         {/* top part left side logo */}
