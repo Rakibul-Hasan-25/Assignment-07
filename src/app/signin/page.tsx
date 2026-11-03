@@ -14,6 +14,7 @@ import {
   FieldError,
   InputGroup,
 } from "@heroui/react";
+import toast from "react-hot-toast";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -46,6 +47,7 @@ export default function SignupPage() {
 
       router.replace("/");
       router.refresh();
+      toast.success("সফল ভাবে সাইন ইন হয়েছে");
     } catch (err) {
       console.error(err);
       setError("কিছু সমস্যা হয়েছে। আবার চেষ্টা করুন।");
@@ -55,25 +57,32 @@ export default function SignupPage() {
   }
   const handleSocialLogin = async (provider: "google" | "github") => {
     setLoading(true);
-
+  
     try {
       const { error } = await authClient.signIn.social({
         provider,
         callbackURL: "/",
       });
-
+  
       if (error) {
-        console.error("লগইন সমস্যা:", error);
-        setLoading(false);
+        toast.error(`${provider} দিয়ে সাইন ইন করা যায়নি!`);
+        return;
       }
+  
+      toast.success(`${provider} দিয়ে সফলভাবে সাইন ইন হয়েছে।`);
     } catch (err) {
-      console.error(err);
+      toast.error(
+        err instanceof Error
+          ? err.message
+          : `${provider} দিয়ে সাইন ইন করা যায়নি!`
+      );
+    } finally {
       setLoading(false);
     }
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-[#f5f8f5] px-4 py-10">
+    <main className="min-h-screen flex flex-col items-center justify-center px-4 py-10">
       <div className="mb-5 text-center">
         <h1 className="mt-5 text-2xl font-bold text-gray-900">সাইন ইন</h1>
 

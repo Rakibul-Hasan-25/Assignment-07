@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "../components/Header";
 
 import { Noto_Sans_Bengali } from "next/font/google";
+import { Toaster } from "react-hot-toast";
+import Footer from "@/components/Footer";
 
 const bengaliFont = Noto_Sans_Bengali({
   subsets: ["bengali"],
@@ -36,6 +38,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <Header/>
         <main>{children}</main>
+        <Footer/>
+        <Toaster position="top-right" toastOptions={{ duration: 1000 }} />
         </body>
     </html>
   );

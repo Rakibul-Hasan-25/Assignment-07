@@ -5,7 +5,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { authClient, useSession } from "@/lib/auth-client";
 import { FieldError, Form, Input, Label, TextField } from "@heroui/react";
-
+import _userIcon from "../../../../public/assets/user-default.png";
+import toast from "react-hot-toast";
 export default function ProfilePage() {
   const router = useRouter();
 
@@ -68,7 +69,7 @@ export default function ProfilePage() {
         setMessageType("error");
         return;
       }
-
+      toast.success("সাইন আউট হয়েছে");
       router.replace("/signin");
       router.refresh();
     } catch {
@@ -109,7 +110,7 @@ export default function ProfilePage() {
               {/* Profile Image */}
               <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-gray-100">
                 <Image
-                  src={session.user.image || "/default-avatar.png"}
+                  src={session.user.image || _userIcon}
                   alt="প্রোফাইল ছবি"
                   fill
                   sizes="40px"

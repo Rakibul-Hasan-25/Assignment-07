@@ -62,3 +62,7 @@ export default function ConvertUnit(unit:string):string{
     };
     return units[unit] || unit;
 }
+
+export interface CategoriesNavProps {
+    categories:Categories[];
+}

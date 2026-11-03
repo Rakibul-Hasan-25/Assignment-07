@@ -14,6 +14,7 @@ import {
   FieldError,
   InputGroup,
 } from "@heroui/react";
+import toast from "react-hot-toast";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -51,18 +52,20 @@ export default function SignupPage() {
         setError(error.message ?? "অ্যাকাউন্ট তৈরি করা যায়নি।");
         return;
       }
-
+      toast.success("অনুরোধ গ্রহণ করা হয়েছে।");
       router.replace("/signin");
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "অ্যাকাউন্ট তৈরি করা যায়নি।");
+      setError(
+        err instanceof Error ? err.message : "অ্যাকাউন্ট তৈরি করা যায়নি।",
+      );
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-[#f5f8f5] px-4 py-10">
+    <main className="min-h-screen flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md rounded-3xl border border-gray-200 bg-white p-7 shadow-xl sm:p-9">
         {/* Brand */}
         <div className="mb-7 text-center">
@@ -122,7 +125,10 @@ export default function SignupPage() {
               পাসওয়ার্ড নিশ্চিত করুন
             </Label>
             <InputGroup className="w-full rounded-xl border border-gray-300 px-0.5 py-0.5">
-              <InputGroup.Input placeholder="পাসওয়ার্ড আবার লিখুন" type={showPassword ? "text" : "password"} />
+              <InputGroup.Input
+                placeholder="পাসওয়ার্ড আবার লিখুন"
+                type={showPassword ? "text" : "password"}
+              />
               <InputGroup.Suffix>
                 <Button
                   type="button"

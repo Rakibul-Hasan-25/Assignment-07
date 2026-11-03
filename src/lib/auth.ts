@@ -9,7 +9,7 @@ if (!mongoUri) {
 }
 
 const client = new MongoClient(mongoUri);
-const db = client.db("better-auth-db-1");
+const db = client.db("better-auth-db");
 
 export const auth = betterAuth({
   baseURL: process.env.BETTER_AUTH_URL,
@@ -18,6 +18,7 @@ export const auth = betterAuth({
 
   emailAndPassword: {
     enabled: true,
+    autoSignIn:false,
   },
 
   socialProviders: {

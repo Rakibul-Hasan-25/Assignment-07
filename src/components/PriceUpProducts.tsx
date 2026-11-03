@@ -6,6 +6,7 @@ import ProductCard from './ProductCard';
 const PriceUpProducts = async() => {
     const products:Product[] = await AllProductsDataProvider();
     const priceUpProducts:Product[] = products.filter((product)=> product.change.dir === "up");
+    const sortedPriceUpProducts = priceUpProducts.sort((a,b)=>b.today-a.today);
     return (
         // main container
         <div className='bg-[#f0f5f0]'>
@@ -18,7 +19,7 @@ const PriceUpProducts = async() => {
                 </div>
                 {/* product cards main container */}
                 <div className='flex items-center justify-center gap-2 flex-wrap lg:justify-between'>
-                    {priceUpProducts.map((product)=>(
+                    {sortedPriceUpProducts.slice(0,6).map((product)=>(
                         <div key={product.id}>
                             <ProductCard product={product} ></ProductCard>
                         </div>

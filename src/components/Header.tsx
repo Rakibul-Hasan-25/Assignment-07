@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Minus, ShoppingCart, Triangle } from "lucide-react";
 import AllProductsDataProvider from "@/lib/AllProductsDataProvider";
 import HandleSession from "./HandleSession";
+import CategoriesNav from "./CategoriesNav";
 const today = new Date();
 
 export const banglaDate = new Intl.DateTimeFormat("bn-BD", {
@@ -45,18 +46,7 @@ const Header = async () => {
       {/* header category part main container */}
       <div className="container mx-auto mb-4">
         {/* header category part sub container */}
-        <div className="flex gap-8 flex-wrap">
-          {categories.map((category) => (
-            <div key={category.id} className="flex  gap-2">
-              <span>{category.icon}</span>
-              <p className="font-bold hover:text-green-700">
-                <Link href={`/category/${category.slug}`}>
-                  {category.nameBn}
-                </Link>
-              </p>
-            </div>
-          ))}
-        </div>
+          <CategoriesNav categories={categories}/>
       </div>
       {/* header bottom moving part main container */}
       <div className="border-t border-b border-gray-200 overflow-hidden">
