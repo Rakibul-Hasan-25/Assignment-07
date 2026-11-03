@@ -1,4 +1,3 @@
-import ProductCard from "@/components/ProductCard";
 import CategoriesDataProvider from "@/lib/CategoriesDataProvider";
 import CategoryProductsDataProvider from "@/lib/CategoryProductsDataProvider";
 import { CategoryProductsProps, Product } from "@/types/DataTypes";
